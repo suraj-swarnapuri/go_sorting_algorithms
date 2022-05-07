@@ -1,6 +1,8 @@
 package comparisonsort
 
-func mergeSort(arr []int) []int {
+import "golang.org/x/exp/constraints"
+
+func mergeSort[T constraints.Ordered](arr []T) []T {
 	if len(arr) < 2 {
 		return arr
 	}
@@ -10,8 +12,8 @@ func mergeSort(arr []int) []int {
 	return merge(left, right)
 }
 
-func merge(a []int, b []int) []int {
-	final := []int{}
+func merge[T constraints.Ordered](a []T, b []T) []T {
+	final := []T{}
 	i := 0
 	j := 0
 	for i < len(a) && j < len(b) {
@@ -32,9 +34,9 @@ func merge(a []int, b []int) []int {
 	return final
 }
 
-func MergeSort(inputArray []int) []int {
+func MergeSort[T constraints.Ordered](inputArray []T) []T {
 	// make a copy of slice
-	arr := make([]int, len(inputArray))
+	arr := make([]T, len(inputArray))
 	copy(arr, inputArray)
 	return mergeSort(arr)
 }

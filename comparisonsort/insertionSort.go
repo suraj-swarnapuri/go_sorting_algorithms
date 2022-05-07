@@ -1,8 +1,10 @@
 package comparisonsort
 
-func InsertionSort(inputArray []int) []int {
+import "golang.org/x/exp/constraints"
+
+func InsertionSort[T constraints.Ordered](inputArray []T) []T {
 	// make a copy of slice
-	arr := make([]int, len(inputArray))
+	arr := make([]T, len(inputArray))
 	copy(arr, inputArray)
 	// sort array
 	for i := 1; i < len(arr); i++ {

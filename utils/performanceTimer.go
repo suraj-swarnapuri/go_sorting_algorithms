@@ -4,9 +4,11 @@ import (
 	"fmt"
 	"sync"
 	"time"
+
+	"golang.org/x/exp/constraints"
 )
 
-func PerformanceTimer(funcName string, f func(arr []int) []int, arr []int, wg *sync.WaitGroup) {
+func PerformanceTimer[T constraints.Ordered](funcName string, f func(arr []T) []T, arr []T, wg *sync.WaitGroup) {
 	defer wg.Done()
 	start := time.Now()
 	f(arr)

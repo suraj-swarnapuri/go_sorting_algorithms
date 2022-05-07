@@ -1,8 +1,9 @@
 package comparisonsort
+import "golang.org/x/exp/constraints"
 
-func BubbleSort(inputArray []int) []int {
+func BubbleSort[T constraints.Ordered](inputArray []T) []T {
 	// make a copy of slice
-	arr := make([]int, len(inputArray))
+	arr := make([]T, len(inputArray))
 	copy(arr, inputArray)
 	// sort array
 	for i := 0; i < len(arr); i++ {
